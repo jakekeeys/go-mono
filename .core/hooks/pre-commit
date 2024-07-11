@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "Enforcing Monorepo formatting rules"
+echo "Stashing unstaged changes"
+git stash -q --keep-index
+make check-format
+EXIT_CODE=$?
+echo "Restoring unstaged changes"
+git stash pop -q
+exit $EXIT_CODE

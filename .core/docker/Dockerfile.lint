@@ -1,0 +1,4 @@
+ARG ARCH
+FROM --platform=linux/${ARCH} golang:1.22
+ARG LINT_VERSION=$LINT_VERSION
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin ${LINT_VERSION}

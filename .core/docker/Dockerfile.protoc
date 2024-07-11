@@ -1,0 +1,9 @@
+ARG ARCH
+FROM --platform=linux/${ARCH} golang:1.22
+ARG PROTOC_VERSION
+ARG PB_RELEASE
+RUN apt-get update -y -q && apt-get install unzip -y -q
+
+RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v$PROTOC_VERSION/$PB_RELEASE
+RUN unzip ${PB_RELEASE} -d $HOME/.local
+RUN rm ${PB_RELEASE}

@@ -1,0 +1,8 @@
+FROM alpine:latest
+ARG SERVICE
+ENV APP=${SERVICE}
+RUN apk add --no-cache ca-certificates libc6-compat musl tzdata gcompat && mkdir /app
+WORKDIR /app
+COPY . .
+RUN chmod +x /app/${SERVICE}
+ENTRYPOINT exec /app/${APP}

@@ -1,0 +1,3 @@
+ARG ARCH
+FROM --platform=linux/${ARCH} golang:1.22
+RUN apt-get update -y -q && apt-get install clang-format -y -q
